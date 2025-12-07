@@ -1,5 +1,6 @@
 # ABM-SEIR Simulation Platform
-
+> ** 2025 Fall Brown PHP2560 Final Project**
+> Zhongyu Fan(zhongyu_fan@brown.edu), Yifei Feng, Qi Qi
 ## 1. Background and Methods
 
 This application simulates the dynamics of the COVID-19 pandemic using an **Agent-Based Model (ABM)** framework. Unlike aggregate equation-based models, ABM simulates individual agents interacting within a virtual environment. The simulation logic is rooted in the **SEIR compartmental framework** and inspired by the methodology presented in *COVID-ABS: An agent-based model of COVID-19 epidemic* (Silva et al., 2020).
