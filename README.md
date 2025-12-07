@@ -1,7 +1,7 @@
 # ABM-SEIR Simulation Platform
 > ** 2025 Fall Brown PHP2560 Final Project **
 
-Zhongyu Fan(zhongyu_fan@brown.edu), Yifei Feng, Qi Qi
+Zhongyu Fan(zhongyu_fan@brown.edu), Yifei Feng(yifei_feng@brown.edu), Qi Qi(qi_qi@brown.edu)
 
 You can access the shiny app from here: https://zhongyu.shinyapps.io/2560FinalProject/
 
