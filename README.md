@@ -1,5 +1,4 @@
 # ABM-SEIR Simulation Platform
-> **Methodology, Mathematical Framework, and Statistical Analysis**
 
 ## 1. Background and Methods
 
