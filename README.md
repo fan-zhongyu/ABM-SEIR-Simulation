@@ -1,5 +1,5 @@
 # ABM-SEIR Simulation Platform
-> ** 2025 Fall Brown PHP2560 Final Project **
+> BrownU 2025 Fall PHP2560 Final Project
 
 Zhongyu Fan(zhongyu_fan@brown.edu), Yifei Feng(yifei_feng@brown.edu), Qi Qi(qi_qi@brown.edu)
 
