@@ -1,0 +1,12 @@
+name: 2560FinalProject
+title: 2560FinalProject
+username: zhongyu
+account: zhongyu
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16258191
+bundleId: 11286229
+url: https://zhongyu.shinyapps.io/2560FinalProject/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
