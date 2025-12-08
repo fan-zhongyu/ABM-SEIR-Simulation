@@ -3,11 +3,77 @@
 
 Zhongyu Fan(zhongyu_fan@brown.edu), Yifei Feng(yifei_feng@brown.edu), Qi Qi(qi_qi@brown.edu)
 
-You can access the shiny app from here: https://zhongyu.shinyapps.io/2560FinalProject/
+You can access the **R SHINY APP** from here: https://zhongyu.shinyapps.io/2560FinalProject/
 
-## 1. Background and Methods
+Our **GitHub Page**: https://github.com/fan-zhongyu/ABM-SEIR-Simulation
 
-This application simulates the dynamics of the COVID-19 pandemic using an **Agent-Based Model (ABM)** framework. Unlike aggregate equation-based models, ABM simulates individual agents interacting within a virtual environment. The simulation logic is rooted in the **SEIR compartmental framework** and inspired by the methodology presented in *COVID-ABS: An agent-based model of COVID-19 epidemic* (Silva et al., 2020).
+## 0. Overview, Main Functions and Features, and Usage Instructions
+### **Application Overview**
+
+The **ABM-SEIR Simulation Platform** is an interactive web-based tool developed in R/Shiny to model the transmission dynamics of COVID-19. Unlike traditional equation-based deterministic models, this application utilizes an **Agent-Based Model (ABM)** framework combined with **SEIR (Susceptible-Exposed-Infected-Recovered)** compartmental logic. The simulation logic is rooted in the **SEIR compartmental framework** and inspired by the methodology presented in *COVID-ABS: An agent-based model of COVID-19 epidemic* (Silva et al., 2020).
+
+This platform allows researchers and policy analysts to simulate individual agent interactions within a spatial environment, visualizing how different public health interventions—such as social distancing, mask mandates, and lockdowns—impact the trajectory of an epidemic. Beyond simulation, the app integrates a robust statistical module to quantify the efficacy of these interventions using linear regression analysis on the generated synthetic data.
+
+------
+
+### **Main Functions and Features**
+
+**1. Literature-Driven Parameterization**
+
+The application bridges the gap between theory and practice by including a dynamic reference database. Users can view key epidemiological parameters ($R_0$, Incubation Period, Infectious Period) from seminal COVID-19 studies (e.g., Kucharski et al., WHO, Li et al.). Clicking on a reference study automatically populates the simulation global settings with those specific values, ensuring the model is grounded in real-world data.
+
+**2. Stochastic Multi-Scenario Simulation**
+
+The core engine runs a stochastic ABM where agents move and interact in a grid. The platform simultaneously simulates seven distinct intervention scenarios, ranging from "No Prevention" to "Conditional Lockdowns" and "Vertical Isolation." To ensure statistical validity, the application employs Monte Carlo methods, running multiple independent repetitions (user-defined) for each scenario to generate Confidence Intervals (CI).
+
+**3. Interactive Visualization**
+
+- **Temporal Dynamics:** Users can view epidemic curves (Infected counts over time) with 95% confidence ribbons.
+- **Spatial Animation:** A playback feature allows users to watch the virus spread across the agent grid day-by-day, color-coded by health state (Blue: Susceptible, Orange: Exposed, Red: Infected, Green: Recovered).
+
+**4. Statistical Analysis**
+
+The application transforms simulation outputs into a dataset for statistical analysis. It fits a Linear Regression model to evaluate:
+
+- **Outcomes:** Peak Prevalence (%) and Day of Peak.
+- **Predictors:** Social Distancing, Mask Effectiveness, and Lockdown status.
+- **Interaction Effects:** The module visualizes interaction terms (e.g., *Social Distancing × Mask Usage*) to reveal synergistic effects of combined interventions.
+- **Diagnostics:** Includes Q-Q plots, Residuals vs. Fitted plots, and correlation heatmaps to assess model validity.
+
+------
+
+### **Usage Instructions**
+
+**Step 1: Setup & Run (Global Configuration)**
+
+1. Navigate to the **"Step 1: Setup & Run"** tab.
+2. **Define Parameters:** Use the sliders to set the Population Size ($N$), Transmission Rate ($\beta$), Incubation Rate ($\sigma$), and Recovery Rate ($\gamma$).
+3. **Use References (Optional):** Click on a row in the "Reference Epidemiological Parameters" table to automatically load parameters from published scientific literature.
+4. **Execute:** Select the number of repetitions (e.g., 50 reps) to balance speed and statistical accuracy, then click **"Run Simulation"**.
+
+**Step 2: Analyze Simulation Results**
+
+1. Once the simulation finishes, go to **"Step 2: Simulation Results"**.
+2. **Visual Inspection:** Select a specific scenario (e.g., "Lockdown") from the dropdown.
+3. **Animation:** Use the "Day" slider to animate the spatial spread of the virus and observe the epidemic curve evolving in real-time.
+4. **Live Counts:** Monitor the dynamic table showing the exact count of S, E, I, and R agents for the selected day.
+
+**Step 3: Scenario Comparison**
+
+1. Navigate to **"Step 3: Scenario Comparison"** to view a comparative line chart overlaying the "Infected" curves for all 7 scenarios.
+2. Read the **-Interpretation**, which dynamically identifies the best/worst strategies and evaluates specific interventions (e.g., explaining why Vertical Isolation may have failed compared to Universal Masking).
+
+**Step 4: Statistical Modeling**
+
+1. Proceed to **"Step 4: Statistical Analysis"**.
+2. **Configure Model:** Select your Outcome variable (e.g., Peak Prevalence) and Predictors. Check "Fit Full Interactions" to see how interventions work together.
+3. **Run Analysis:** Click **"Run Analysis"** to generate the regression model.
+4. **Review Outputs:** Explore the Coefficient plot to see effect sizes, check the Correlation Heatmap, and analyze the Interaction Plots to understand non-linear policy effects.
+5. **Export:** Click "Download Data (.csv)" to save the aggregated simulation results for external analysis.
+
+## 1. Methods
+
+Unlike aggregate equation-based models, ABM simulates individual agents interacting within a virtual environment.
 
 ### Methodological Approach: Monte Carlo Simulations
 > Agent-based models are inherently stochastic. A single simulation run represents only one possible trajectory of the epidemic. To ensure statistical robustness, this application utilizes **Monte Carlo methods**. For each scenario, the simulation is executed over $N_{reps}$ independent repetitions. The results are aggregated to compute the Mean and 95% Confidence Intervals (CI).
